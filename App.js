@@ -1,14 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import {Hello} from "./Hello";
+import { Button, StyleSheet, Text, View, useColorScheme } from 'react-native';
+import {Hello} from './Hello';
 import AppButton from './components/AppButton/AppButton';
+import theme from './theme';
 
 export default function App() {
+
+const colors = theme();
 
   const onPressClic = () => {
     console.log("Salut :)");
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    monTexte : { 
+      color: "blue",
+    },
+  
+  });
+  
   return (
     <View style={styles.container}>
       <Hello couleur="red" taille={50}></Hello>
@@ -18,17 +34,8 @@ export default function App() {
       <StatusBar style="auto" />
     </View>
   );
+
+
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  monTexte : { 
-    color: "blue",
-  },
-
-});

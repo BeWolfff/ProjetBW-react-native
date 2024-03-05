@@ -1,3 +1,6 @@
+import { useColorScheme } from "react-native";
+
+
 const colors = {
     primary: "#467386",
     accent: "#D5A26A",
@@ -8,4 +11,21 @@ const colors = {
     darkerGrey: "#222",
     lightGrey: "#bbb",
     lighterGrey: "#eee"
+  };
+
+  const themeColors =  {
+    dark: {
+        background: colors.darkerGrey, 
+    },
+    light: {
+        background: colors.white, 
+    },
+  };
+
+  export default () => {
+
+    const scheme = useColorScheme();
+    console.log(scheme)
+    return {...colors, ...themeColors[scheme]};
+
   };

@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { colors } from "../../theme";
 
-export default StyleSheet.create({
+
+export default AppButtonStyles = () => {
+
+    const colorsTheme = theme();
+
+    return StyleSheet.create({
 
     container: {
         backgroundColor: colors.primary,
@@ -12,3 +17,4 @@ export default StyleSheet.create({
         color: "white", 
     },
 });
+}
