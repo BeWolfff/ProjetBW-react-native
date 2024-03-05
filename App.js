@@ -5,35 +5,30 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppStyles from "./AppStyles";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-export default function App() {
+import Accueil from "./screens/Accueil/Accueil";
+import Chercher from "./screens/Chercher/Chercher";
+import Vendre from "./screens/Vendre/Vendre";
+import Message from "./screens/Message/Message";
+import Profil from "./screens/Profil/Profil";
+export default () => {
   const NavigationPrincipale = createBottomTabNavigator();
-  const EcranPrincipal = () => {
-    const styles = AppStyles();
-    const onPressClicMoi = () => {
-      console.log("Hello !");
-    };
+  const App = () => {
     return (
-      <View style={[styles.safeArea, styles.container]}>
-        <AppButton title="Clic moi" onPress={onPressClicMoi}></AppButton>
-        <StatusBar style="auto" />
-      </View>
-    );
-  };
-  const EcranAutre = () => {
-    return (
-      <View>
-        <Text>Autre écran</Text>
-      </View>
+      <NavigationPrincipale.Navigator>
+        <NavigationPrincipale.Screen name="accueil" component={Accueil} />
+        <NavigationPrincipale.Screen name="chercher" component={Chercher} />
+        <NavigationPrincipale.Screen name="vendre" component={Vendre} />
+        <NavigationPrincipale.Screen name="message" component={Message} />
+        <NavigationPrincipale.Screen name="profil" component={Profil} />
+      </NavigationPrincipale.Navigator>
     );
   };
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <NavigationPrincipale.Navigator>
-          <NavigationPrincipale.Screen name="main" component={EcranPrincipal} />
-          <NavigationPrincipale.Screen name="other" component={EcranAutre} />
-        </NavigationPrincipale.Navigator>
+        <StatusBar style="auto" />
+        <App></App>
       </NavigationContainer>
     </SafeAreaProvider>
   );
-}
+};
