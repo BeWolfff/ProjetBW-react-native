@@ -4,11 +4,18 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style ={styles.monTexte}>
-        Berenice !!! Open up App.js to start working on your app!</Text>
+      <Hello/>
       <StatusBar style="auto" />
     </View>
   );
+}
+
+const Hello = function() {
+  return (
+    <View>
+      <Text>Hello World</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
