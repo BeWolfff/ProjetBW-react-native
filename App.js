@@ -10,7 +10,7 @@ export default function App() {
   );
 }
 
-const Hello = () => {
+const Hello = function() {
   return (
     <View>
       <Text>Hello World</Text>
