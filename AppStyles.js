@@ -20,7 +20,13 @@ export default AppStyles = () => {
     centered: {
       alignItems: "center",
       justifyContent: "center",
-    }
+    },
+    itemMenuActif: {
+      color: colorsTheme.primary,
+    },
+    itemMenuInactif: {
+      color: colorsTheme.lightGrey,
+    },
 
   });
 };
