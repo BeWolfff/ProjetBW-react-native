@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../theme";
+import theme from "../../theme";
 
 
 export default AppButtonStyles = () => {
@@ -9,7 +9,7 @@ export default AppButtonStyles = () => {
     return StyleSheet.create({
 
     container: {
-        backgroundColor: colors.primary,
+        backgroundColor: colorsTheme.primary,
         padding: 10,
         borderRadius: 5,
     },

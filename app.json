@@ -3,7 +3,7 @@
     "name": "ProjetBW-react-native",
     "slug": "ProjetBW-react-native",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "automatic",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
