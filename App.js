@@ -10,12 +10,23 @@ import Chercher from "./screens/Chercher/Chercher";
 import Vendre from "./screens/Vendre/Vendre";
 import Message from "./screens/Message/Message";
 import Profil from "./screens/Profil/Profil";
+import { Icon } from "@rneui/base";
+
+
 export default () => {
   const NavigationPrincipale = createBottomTabNavigator();
   const App = () => {
     return (
       <NavigationPrincipale.Navigator>
-        <NavigationPrincipale.Screen name="accueil" component={Accueil} />
+        <NavigationPrincipale.Screen 
+          options={{
+            headerShown: false,
+            tabBarIcon : ({color}) => {
+              return (<Icon type= "material" name="home" color={color}></Icon>)},
+            }}
+          name="accueil" 
+          component={Accueil} 
+        />
         <NavigationPrincipale.Screen name="chercher" component={Chercher} />
         <NavigationPrincipale.Screen name="vendre" component={Vendre} />
         <NavigationPrincipale.Screen name="message" component={Message} />
