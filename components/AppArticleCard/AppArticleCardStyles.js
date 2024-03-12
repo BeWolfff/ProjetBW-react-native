@@ -7,7 +7,12 @@ export default AppArticleCardStyles = () => {
     const colorsTheme = theme();
 
     return StyleSheet.create({
-    container: {},
+        container: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 10,
+        },
     text: {},
     image: {
         height: "100%",
@@ -15,8 +20,8 @@ export default AppArticleCardStyles = () => {
         resizeMode: "cover"
     },
     imageContainer: {
-        width: 150,
-        height: 200,
+        width: 200,
+        height: 150,
     },
 
 });

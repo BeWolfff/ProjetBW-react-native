@@ -7,17 +7,19 @@ export default ({onPress, article}) => {
 
     const styles = AppArticleCardStyles();
 
+    console.log(article);
+
     return (
         <Pressable style={styles.container} onPress={onPress}>
             <View style={styles.imageContainer}>
             <Image 
             style={styles.image} 
-            source={{uri : article.thumbnail}}
+            source={{uri : article.photos[0]}}
             cachePolicy="memory-disk"
             />
             </View>
-            <Text>{article.title}</Text>
-            <Text>{article.price}€</Text>
+            <Text>{article.titre}</Text>
+            <Text>{article.prix}€</Text>
         </Pressable>
     );
 };

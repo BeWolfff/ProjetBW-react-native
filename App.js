@@ -14,11 +14,12 @@ import { Icon } from "@rneui/base";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
 import Connexion from "./screens/Connexion/Connexion";
+import * as SecureStore from 'expo-secure-store'
 
 
 export default () => {
 
-  const [connecte, setConnecte]=useState(false);
+  const [connecte, setConnecte] = useState(false);
 
   const onConnexion = (data) => {
   
@@ -28,7 +29,10 @@ export default () => {
       headers: {"content-type": "application/json"},
     })
     .then((result) => result.json())
-    .then((result) => console.log(result.jwt));
+    .then((result) => {
+      SecureStore.setItem("jwt", result.jwt)
+      setConnecte(true);
+    });
   }
 
 
