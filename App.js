@@ -11,11 +11,48 @@ import Vendre from "./screens/Vendre/Vendre";
 import Message from "./screens/Message/Message";
 import Profil from "./screens/Profil/Profil";
 import { Icon } from "@rneui/base";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useState } from "react";
+import Connexion from "./screens/Connexion/Connexion";
 
 
 export default () => {
+
+  const [connecte, setConnecte]=useState(false);
+
+  const onConnexion = (data) => {
+  
+    fetch("http://192.168.155.162:4000/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {"content-type": "application/json"},
+    })
+    .then((result) => result.json())
+    .then((result) => console.log(result.jwt));
+  }
+
+
   const NavigationPrincipale = createBottomTabNavigator();
-  const App = () => {
+  const NavigationConnexion = createNativeStackNavigator();
+
+  const EcransConnexions = () => {
+    const ConnexionProps = () => (
+      <Connexion onConnexion={onConnexion}></Connexion>
+    );
+
+    return (
+      <NavigationConnexion.Navigator>
+        <NavigationConnexion.Screen
+        component={ConnexionProps}
+        name="connexion"
+        />
+
+      </NavigationConnexion.Navigator>
+    )
+
+    }
+  
+  const EcransPrincipaux = () => {
 
     const styles = AppStyles();
 
@@ -82,11 +119,12 @@ export default () => {
       </NavigationPrincipale.Navigator>
     );
   };
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <StatusBar style="auto" />
-        <App></App>
+        {connecte ? <EcransPrincipaux/> : <EcransConnexions/>}
       </NavigationContainer>
     </SafeAreaProvider>
   );
