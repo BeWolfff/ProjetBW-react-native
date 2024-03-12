@@ -1,6 +1,7 @@
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import AppStyles from "../../AppStyles";
 import { useEffect, useState } from "react";
+import AppArticleCard from "../../components/AppArticleCard/AppArticleCard";
 
 
 export default () => {
@@ -18,7 +19,12 @@ export default () => {
   const appStyles = AppStyles();
 
   return (
-    <View style={[appStyles.container, appStyles.centered]}>
+    <View style={[appStyles.container, appStyles.safeArea]}>
+      <FlatList
+        data={listeArticle}
+        renderItem={({item}) => <AppArticleCard article={item}/>}
+        keyExtractor={item => item.id}
+      />
       <Text>Accueil</Text>
     </View>
   );
