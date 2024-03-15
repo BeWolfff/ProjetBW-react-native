@@ -19,11 +19,10 @@ import * as SecureStore from 'expo-secure-store'
 
 export default () => {
 
-  const [connecte, setConnecte] = useState(false);
-
+  const [connecte, setConnecte] = useState(SecureStore.getItem("jwt") != null);
   const onConnexion = (data) => {
   
-    fetch("http://192.168.155.162:4000/login", {
+    fetch("http://192.168.0.44:4000/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {"content-type": "application/json"},
@@ -35,6 +34,10 @@ export default () => {
     });
   }
 
+    const onDeconnexion =() => {
+      SecureStore.deleteItemAsync("fjwt");
+      setConnecte(false);
+    }
 
   const NavigationPrincipale = createBottomTabNavigator();
   const NavigationConnexion = createNativeStackNavigator();
@@ -59,6 +62,10 @@ export default () => {
   const EcransPrincipaux = () => {
 
     const styles = AppStyles();
+
+    const ProfilProps = () => (
+      <Profil onDeconnexion={onDeconnexion} />
+    )
 
     return (
       <NavigationPrincipale.Navigator>
@@ -118,7 +125,7 @@ export default () => {
             tabBarInactiveTintColor : styles.itemMenuInactif.color,
             }}
         name="profil" 
-        component={Profil} 
+        component={ProfilProps} 
         />
       </NavigationPrincipale.Navigator>
     );

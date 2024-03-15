@@ -11,8 +11,8 @@ export default () => {
 
     useEffect(() => {
 
-        fetch("http://192.168.155.162:4000/offres", {
-          headers: {Authorization: "Bearer" + SecureStore.getItem("jwt")},
+        fetch("http://192.168.0.44:4000/offres", {
+          headers: {Authorization: "Bearer " + SecureStore.getItem("jwt")},
     })
             .then(result => result.json())
             .then(result => setListeArticle(result));

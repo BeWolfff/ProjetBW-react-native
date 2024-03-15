@@ -9,8 +9,8 @@ export default ({onConnexion}) => {
 
 const styles = AppStyles();
 
-const [email, setEmail] = useState("a@a.com");
-const [password, setPassword] = useState("root");
+const [email, setEmail] = useState("a@a.com"); // enlever cet identifiant pour retrouver la page de connexion
+const [password, setPassword] = useState("root"); // enlever cet identifiant pour retrouver la page de connexion
 
 
   return (
