@@ -11,7 +11,7 @@ export default () => {
 
     useEffect(() => {
 
-        fetch("http://" + process.env.IP_SERVEUR + "/offres", {
+        fetch("http://" + process.env.EXPO_PUBLIC_IP_SERVEUR + "/offres", {
           headers: {Authorization: "Bearer " + SecureStore.getItem("jwt")},
     })
             .then(result => result.json())
