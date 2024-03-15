@@ -20,7 +20,7 @@ export default () => {
   const [connecte, setConnecte] = useState(SecureStore.getItem("jwt") != null);
 
   const onConnexion = (data) => {
-    fetch("http://192.168.0.44:4000/login", {
+    fetch("http://" + process.env.IP_SERVEUR + "/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "content-type": "application/json" },
@@ -45,7 +45,7 @@ export default () => {
 
     const onInscription = (data) => {
 
-      fetch("http://192.168.0.44:4000/utilisateur", {
+      fetch("http://" + process.env.IP_SERVEUR + "/utilisateur", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "content-type": "application/json" },

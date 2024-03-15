@@ -11,7 +11,7 @@ export default () => {
 
     useEffect(() => {
 
-        fetch("http://192.168.0.44:4000/offres", {
+        fetch("http://" + process.env.IP_SERVEUR + "/offres", {
           headers: {Authorization: "Bearer " + SecureStore.getItem("jwt")},
     })
             .then(result => result.json())
