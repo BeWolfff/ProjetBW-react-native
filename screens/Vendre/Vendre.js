@@ -3,50 +3,48 @@ import AppStyles from "../../AppStyles";
 import { Input } from "@rneui/themed";
 import { Controller, useForm } from "react-hook-form";
 import AppButton from "../../components/AppButton/AppButton";
+import AppInputText from "../../components/AppInputText/AppInputText";
 
 
 export default () => {
   const appStyles = AppStyles();
 
-  const {control, handleSubmit, formState: {errors}} = useForm();
+  const {control, handleSubmit, 
+    formState: {errors},
+    } = useForm();
 
   const onAjout = (offre) => console.log(offre)
 
   return (
     <View style={[appStyles.container, appStyles.centered]}>
-      <Controller 
+      <AppInputText 
       control={control}
       name="nom"
       defaultValue=""
-      rules={{required: true}}
-      render={({field:{onChange, onBlur,value}})=> (
-        <Input label="Nom" 
-        style={{margin:0, padding:0}} 
-        onBlur={onBlur}
-        onChangeText={(text) => onChange(text)}
-        value={value}      
-        />
-      )}
+      rules={{
+        required:"Le champs est requis", 
+        minLength: {value: 3, message: "3 caractères minimum"}, 
+        maxLength: {value: 20, message: "20 caractères maximum"},
+      }}
+      label="Nom"
       />
-      <Controller
-      control={control}
-      name="Description"
-      defaultValue=""
-      rules={{required: true}}
-      render={({field:{onChange, onBlur,value}})=> (
-        <Input label="Description" 
-        style={{margin:0, padding:0}} 
+      <AppInputText
+        control={control}
+        name="description"
+        defaultValue=""
+        rules={{
+          maxLength: {value: 100, message: "100 caractères maximum"},
+        }}
+        label="Description" 
         multiline={true}
         numberOfLines={4}
-        onBlur={onBlur}
-        onChangeText={(text) => onChange(text)}
-        value={value}      
         />
-      )}/>
-
-      <AppButton title="Ajouter mon offre" onPress={handleSubmit(onAjout)} >
-
+    
+      <AppButton 
+        title="Ajouter mon offre" 
+        onPress={handleSubmit(onAjout)} >
       </AppButton>
+
     </View>
   );
 };
