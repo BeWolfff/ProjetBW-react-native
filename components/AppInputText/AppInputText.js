@@ -12,7 +12,7 @@ export default ({
     rules, label, 
     style = {},
     multiline = false,
-    numberOfLine = 0,
+    numberOfLine = 1,
 }) => {
 
     const styles = AppInputTextStyles();
@@ -30,7 +30,16 @@ export default ({
           onChangeText={(text) => onChange(text)}
           value={value}    
           multiline = {multiline}
-          numberOfLine = {numberOfLine}
+          inputStyle={
+            multiline
+            ? {
+                textAlignVertical: 'top',
+                height: 120,
+            }
+            : {
+                height: 30,
+            }
+          }
           errorMessage={
             control._formState.errors[name]
             ? control._formState.errors[name].message

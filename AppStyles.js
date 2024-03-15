@@ -21,10 +21,10 @@ export default AppStyles = () => {
       alignItems: "center",
       justifyContent: "center",
     },
-    itemMenuActif: {
+    itemMenuActive: {
       color: colorsTheme.primary,
     },
-    itemMenuInactif: {
+    itemMenuInactive: {
       color: colorsTheme.lightGrey,
     },
 
