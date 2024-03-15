@@ -24,7 +24,7 @@ export default () => {
         value={value}      
         />
       )}
-      ></Controller>
+      /><Controller
       control={control}
       name="Designation"
       defaultValue=""
@@ -38,7 +38,7 @@ export default () => {
         onChangeText={(text) => onChange<(text)}
         value={value}      
         />
-      )}
+      )}/>
     </View>
   );
 };
