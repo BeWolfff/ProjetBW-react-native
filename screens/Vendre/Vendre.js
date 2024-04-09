@@ -7,17 +7,34 @@ import AppInputText from "../../components/AppInputText/AppInputText";
 import { useState } from "react";
 import * as ImagePicker from 'expo-image-picker';
 import VendreStyles from "./VendreStyles";
+import * as SecureStore from 'expo-secure-store';
 
 
 export default () => {
   const appStyles = AppStyles();
   const styles = VendreStyles();
 
-  const {control, handleSubmit, 
+  const {control, 
+    handleSubmit, 
     formState: {errors},
     } = useForm();
 
-  const onAjout = (offre) => console.log(offre)
+  const onAjout = (offre) => {
+
+    console.log(offre);
+
+    fetch("http://" + process.env.EXPO_PUBLIC_IP_SERVEUR + "/offre", {
+      method: "POST",
+      body: JSON.stringify(offre),
+      headers: {
+        "content-type": "application/json", 
+        "Authorization": "Bearer " + SecureStore.getItem("jwt"),
+      },
+    })
+    .then(result => result.json())
+    .then(result => console.log(result));
+  };
+
  
   const [photos, setPhotos] = useState([]); 
 
@@ -77,14 +94,14 @@ export default () => {
       ></FlatList>
       <AppInputText 
       control={control}
-      name="nom"
+      name="titre"
       defaultValue=""
       rules={{
         required:"Le champs est requis", 
         minLength: {value: 3, message: "3 caractères minimum"}, 
         maxLength: {value: 20, message: "20 caractères maximum"},
       }}
-      label="Nom"
+      label="Titre"
       />
       <AppInputText
         control={control}
@@ -97,6 +114,19 @@ export default () => {
         multiline={true}
         numberOfLines={4}
         />
+
+      <AppInputText
+        control={control}
+        name="prix"
+        defaultValue=""
+        rules={{
+          maxLength: {value: 10, message: "100 caractères maximum"},
+        }}
+        label="Prix" 
+        multiline={true}
+        numberOfLines={1}
+        />
+
     
       <AppButton 
         title="Ajouter une photo" 

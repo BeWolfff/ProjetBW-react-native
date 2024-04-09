@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ProjetBW-react-native",
-    "slug": "ProjetBW-react-native",
+    "slug": "natvx",
     "version": "1.0.0",
     "orientation": "automatic",
     "icon": "./assets/icon.png",
@@ -28,6 +28,12 @@
     },
     "plugins": [
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "b71fd2ab-d618-4ffc-afd7-4336d736dc06"
+      }
+    },
+    "owner": "berenice.wolf"
   }
 }
