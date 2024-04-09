@@ -20,6 +20,9 @@ export default () => {
   const [connecte, setConnecte] = useState(SecureStore.getItem("jwt") != null);
 
   const onConnexion = (data) => {
+
+    console.log(process.env.EXPO_PUBLIC_IP_SERVEUR);
+
     fetch("http://" + process.env.EXPO_PUBLIC_IP_SERVEUR + "/login", {
       method: "POST",
       body: JSON.stringify(data),
@@ -27,6 +30,8 @@ export default () => {
     })
       .then((result) => result.json())
       .then((result) => {
+        console.log(result.jwt);
+        
         SecureStore.setItem("jwt", result.jwt);
         setConnecte(true);
       });
