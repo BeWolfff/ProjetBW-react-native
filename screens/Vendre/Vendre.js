@@ -100,11 +100,15 @@ export default () => {
     
       <AppButton 
         title="Ajouter une photo" 
+        icon="camera"
+        type="icon"
         onPress={prendrePhoto} >
       </AppButton>
 
       <AppButton 
         title = "Selectionne une photo" 
+        icon="image"
+        type="icon"
         onPress={selectionnePhoto} >
       </AppButton>
 

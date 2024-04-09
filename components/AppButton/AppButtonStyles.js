@@ -13,6 +13,14 @@ export default AppButtonStyles = () => {
         padding: 10,
         borderRadius: 5,
     },
+
+    icon : {
+      width:30, 
+      height:30, 
+      borderRadius: 15, 
+      backgroundColor:"white"
+    },
+
     text: {
         color: "white", 
     },
