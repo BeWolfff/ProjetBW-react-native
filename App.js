@@ -23,9 +23,6 @@ import Constants from "expo-constants";
 import { LogBox } from "react-native";
 
 
-
-
-
 export default () => {
 
   useEffect(() => {
