@@ -18,7 +18,7 @@ export default () => {
       return;
     }
     setLoading(true);
-    fetch(`http://${process.env.EXPO_PUBLIC_IP_SERVEUR}/offre?search=${query}`, {
+    fetch(`http://${process.env.EXPO_PUBLIC_IP_SERVEUR}/offres?search=${query}`, {
       method: "GET",
       //Je dois m'assurer d'une méthode GET pour la recherche = que l'endpoint /offre supporte les requêtes GET avec un paramètre de recherche
       headers: {
@@ -27,11 +27,12 @@ export default () => {
       },
     })
     .then(response => {
-      console.log(response.text());  // pour voir la réponse brute
+      //console.log(response.text());  // pour voir la réponse brute
       return response.json();
     }) 
     .then(result => {
       setResults(result);
+      console.log(result)
       setLoading(false);
     })
     .catch(error => {
@@ -53,9 +54,9 @@ export default () => {
       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : (
         <FlatList
           data={results}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
-            <Text style={styles.itemText}>{item.title}</Text>
+            <Text style={styles.itemText}>{item.titre}</Text>
           )}
         />
       )}
